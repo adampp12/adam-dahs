@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Adam Dahs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* الأساسيات */
+        :root {
+            --main-color: #0ff;
+            --bg-dark: #0a0a0a;
+            --bg-medium: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #fff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* التنقل */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.97);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #00f, var(--main-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .nav-links a:hover {
+            color: var(--main-color);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 5% 2rem;
+            background: radial-gradient(circle at center, #1a1a1a, var(--bg-dark));
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00f, var(--main-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        /* زر CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #00f, var(--main-color));
+            border: none;
+            border-radius: 2rem;
+            color: #fff;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        /* قسم التعريف */
+        .about {
+            padding: 4rem 5%;
+            background: #0f0f0f;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            padding: 1.5rem;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        /* الخدمات */
+        .features {
+            padding: 4rem 5%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-medium);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: 0.3s;
+        }
+
+        /* التذييل */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* الرسوم المتحركة */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        /* تجاوبية الهاتف */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .about-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">ADAM DAHS</div>
+        <div class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">عني</a>
+            <a href="#services">الخدمات</a>
+            <a href="#contact">اتصل</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>ADAM DAHS</h1>
+        <p>
+            <span style="display: block; margin-bottom: 1rem;">مطور ويب محترف | للتعرف على عالم الإبداع الرقمي</span>
+            <span style="color: var(--main-color);">اضغط على الزر الأزرق لاستكشاف أعمالي</span>
+        </p>
+        <a href="#about" class="cta-button">استعرض الأعمال ↗</a>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 2rem;">السيرة الذاتية</h2>
+            <p style="font-size: clamp(1rem, 3vw, 1.2rem);">
+                مطور ويب بخبرة 5+ سنوات في إنشاء حلول رقمية مبتكرة.<br>
+                متخصص في تطوير الواجهات التفاعلية وتجارب المستخدم الفريدة.
+            </p>
+            <div class="stats">
+                <div class="stat-box">
+                    <i class="fas fa-trophy"></i>
+                    +50 مشروع ناجح
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    100% رضا العملاء
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-clock"></i>
+                    24/7 دعم فني
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="services">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-code feature-icon"></i>
+                <h3>تطوير الويب</h3>
+                <p>حلول ويب متكاملة بتقنيات حديثة</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h3>تطبيقات الجوال</h3>
+                <p>تطبيقات أندرويد وآيفون عالية الجودة</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-paint-brush feature-icon"></i>
+                <h3>تصميم UI/UX</h3>
+                <p>تصميمات مبتكرة لجذب المستخدمين</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 ADAM DAHS. جميع الحقوق محفوظة</p>
+    </footer>
+</body>
+
+</html>
